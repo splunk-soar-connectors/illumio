@@ -23,6 +23,7 @@ report.xml
 # build files
 build/
 dist/
+wheels/
 *.egg-info/
 
 # mac
