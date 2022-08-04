@@ -1,0 +1,400 @@
+{
+    "appid": "33ff9d67-3ac0-4be3-b489-b2b4e729db79",
+    "name": "Illumio",
+    "description": "Port blocking app",
+    "type": "network security",
+    "product_vendor": "Illumio",
+    "logo": "logo_illumio.svg",
+    "logo_dark": "logo_illumio_dark.svg",
+    "product_name": "Illumio",
+    "python_version": "3",
+    "product_version_regex": ".*",
+    "publisher": "Illumio",
+    "license": "Copyright (c) Illumio, 2022",
+    "app_version": "1.0.0",
+    "utctime_updated": "2022-07-19T07:24:45.112655Z",
+    "package_name": "phantom_illumio",
+    "main_module": "illumio_connector.py",
+    "min_phantom_version": "5.3.0",
+    "app_wizard_version": "1.0.0",
+    "latest_tested_versions": [
+        "Illumio 21.2, Cloud, 2nd August 2022"
+    ],
+    "configuration": {
+        "hostname": {
+            "required": true,
+            "data_type": "string",
+            "description": "Hostname",
+            "order": 0
+        },
+        "port": {
+            "required": true,
+            "data_type": "numeric",
+            "description": "Port",
+            "order": 1
+        },
+        "api_key": {
+            "required": true,
+            "data_type": "string",
+            "description": "API key",
+            "order": 2
+        },
+        "api_secret": {
+            "required": true,
+            "data_type": "password",
+            "description": "API Secret",
+            "order": 3
+        },
+        "org_id": {
+            "required": true,
+            "data_type": "numeric",
+            "description": "Org ID",
+            "order": 4
+        }
+    },
+    "actions": [
+        {
+            "action": "test connectivity",
+            "identifier": "test_connectivity",
+            "description": "Validate the asset configuration for connectivity using supplied configuration",
+            "type": "test",
+            "parameters": {},
+            "output": [],
+            "read_only": true,
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "get traffic analysis",
+            "identifier": "get_traffic_analysis",
+            "description": "List of traffic on specified port",
+            "verbose": "The end_time will be the current time if a user provides no input and the start_time will be 5 years back from end_time if the user provides no input. Alllowed values for 'policy_decisions' parameter are: allowed, unknown, potentially_blocked, and blocked.",
+            "type": "investigative",
+            "read_only": true,
+            "parameters": {
+                "start_time": {
+                    "data_type": "string",
+                    "order": 0,
+                    "description": "Start time for traffic analysis",
+                    "required": true
+                },
+                "end_time": {
+                    "data_type": "string",
+                    "order": 1,
+                    "description": "End time for traffic analysis",
+                    "required": true
+                },
+                "port": {
+                    "data_type": "numeric",
+                    "order": 2,
+                    "description": "Port number (Valid port range is 1-65535)",
+                    "required": true
+                },
+                "protocol": {
+                    "data_type": "string",
+                    "value_list": [
+                        "TCP",
+                        "UDP"
+                    ],
+                    "order": 3,
+                    "description": "Protocol",
+                    "default": "TCP",
+                    "required": true
+                },
+                "policy_decisions": {
+                    "data_type": "string",
+                    "order": 4,
+                    "description": "Policy decisions (Comma-seperated values are allowed)",
+                    "required": true
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.data.*.traffic_flow.*.dst.ip",
+                    "data_type": "string",
+                    "example_values": [
+                        "13.234.176.102"
+                    ],
+                    "column_name": "DST IP",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data.*.traffic_flow.*.src.ip",
+                    "data_type": "string",
+                    "example_values": [
+                        "10.50.4.153"
+                    ],
+                    "column_name": "SRC IP",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.traffic_flow.*.src.workload.href",
+                    "data_type": "string",
+                    "example_values": [
+                        "/orgs/1/workloads/5913e8a8-2f74-4db1-b5aa-280f75dc66b3"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.traffic_flow.*.src.workload.name",
+                    "data_type": "string",
+                    "example_values": [
+                        "workload-localhost.localdomain"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.traffic_flow.*.src.workload.os_type",
+                    "data_type": "string",
+                    "example_values": [
+                        "linux"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.traffic_flow.*.src.workload.hostname",
+                    "data_type": "string",
+                    "example_values": [
+                        "localhost.localdomain"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.traffic_flow.*.state",
+                    "data_type": "string",
+                    "example_values": [
+                        "timed out"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.traffic_flow.*.dst_bi",
+                    "data_type": "numeric",
+                    "example_values": [
+                        0
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.traffic_flow.*.dst_bo",
+                    "data_type": "numeric",
+                    "example_values": [
+                        0
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.traffic_flow.*.service.port",
+                    "data_type": "numeric",
+                    "example_values": [
+                        22
+                    ],
+                    "column_name": "SERVICE PORT",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.data.*.traffic_flow.*.service.proto",
+                    "data_type": "numeric",
+                    "example_values": [
+                        6
+                    ],
+                    "column_name": "SERVICE PROTOCOL NUMBER",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.data.*.traffic_flow.*.service.user_name",
+                    "data_type": "string",
+                    "example_values": [
+                        "devuser"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.traffic_flow.*.flow_direction",
+                    "data_type": "string",
+                    "example_values": [
+                        "outbound"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.traffic_flow.*.num_connections",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.traffic_flow.*.policy_decision",
+                    "data_type": "string",
+                    "example_values": [
+                        "potentially_blocked"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.traffic_flow.*.timestamp_range.last_detected",
+                    "data_type": "string",
+                    "example_values": [
+                        "2022-07-28T09:07:55Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.traffic_flow.*.timestamp_range.first_detected",
+                    "data_type": "string",
+                    "example_values": [
+                        "2022-07-28T09:07:55Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.traffic_flow.*.dst.workload.href",
+                    "data_type": "string",
+                    "example_values": [
+                        "/orgs/1/workloads/5913e8a8-2f74-4db1-b5aa-280f75dc66b3"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.traffic_flow.*.dst.workload.name",
+                    "data_type": "string",
+                    "example_values": [
+                        "workload-localhost.localdomain"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.traffic_flow.*.dst.workload.os_type",
+                    "data_type": "string",
+                    "example_values": [
+                        "linux"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.traffic_flow.*.dst.workload.hostname",
+                    "data_type": "string",
+                    "example_values": [
+                        "localhost.localdomain"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.traffic_flow.*.service.process_name",
+                    "data_type": "string",
+                    "example_values": [
+                        "sshd"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.traffic_flow.*.dst.virtual_service.href",
+                    "data_type": "string",
+                    "example_values": [
+                        "/orgs/1/sec_policy/draft/virtual_services/16ab3e56-7cb8-438e-a580-89d55632dae4"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.traffic_flow.*.dst.virtual_service.name",
+                    "data_type": "string",
+                    "example_values": [
+                        "Virtual-service-22"
+                    ],
+                    "column_name": "DST VIRTUAL SERVICE",
+                    "column_order": 5
+                },
+                {
+                    "data_path": "action_result.data.*.traffic_flow.*.src.ip_lists.*.href",
+                    "data_type": "string",
+                    "example_values": [
+                        "/orgs/1/sec_policy/draft/ip_lists/966"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.traffic_flow.*.src.ip_lists.*.name",
+                    "data_type": "string",
+                    "example_values": [
+                        "test-iplist"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.traffic_flow.*.dst.workload.labels.*.href",
+                    "data_type": "string",
+                    "example_values": [
+                        "/orgs/1/labels/1240"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "example_values": [
+                        "message"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.start_time",
+                    "data_type": "string",
+                    "example_values": [
+                        "2022-08-02T14:32:45.135761"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.end_time",
+                    "data_type": "string",
+                    "example_values": [
+                        "2022-08-02T14:32:45.135761"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.port",
+                    "data_type": "numeric",
+                    "example_values": [
+                        22
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.protocol",
+                    "data_type": "string",
+                    "example_values": [
+                        "tcp"
+                    ],
+                    "column_name": "PROTOCOL",
+                    "column_order": 4
+                },
+                {
+                    "data_path": "action_result.parameter.policy_decisions",
+                    "data_type": "string",
+                    "example_values": [
+                        "unknown"
+                    ]
+                }
+            ],
+            "render": {
+                "type": "table",
+                "title": "Traffic List"
+            },
+            "versions": "EQ(*)"
+        }
+    ],
+    "pip_dependencies": {
+        "wheel": [
+            {
+                "module": "illumio",
+                "input_file": "wheels/shared/illumio-1.0.0-py3-none-any.whl"
+            },
+            {
+                "module": "pytz",
+                "input_file": "wheels/shared/pytz-2022.1-py2.py3-none-any.whl"
+            },
+            {
+                "module": "dateutil",
+                "input_file": "wheels/shared/python_dateutil-2.8.2-py2.py3-none-any.whl"
+            }
+        ]
+    }
+}
