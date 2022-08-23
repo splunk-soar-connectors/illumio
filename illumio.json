@@ -379,13 +379,1067 @@
                 "title": "Traffic List"
             },
             "versions": "EQ(*)"
+        },
+        {
+            "action": "create virtual service",
+            "identifier": "create_virtual_service",
+            "description": "Creates a new virtual service",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "port": {
+                    "data_type": "numeric",
+                    "order": 0,
+                    "description": "Port",
+                    "required": true
+                },
+                "protocol": {
+                    "data_type": "string",
+                    "value_list": [
+                        "UDP",
+                        "TCP"
+                    ],
+                    "order": 1,
+                    "description": "Protocol",
+                    "default": "tcp",
+                    "required": true
+                },
+                "name": {
+                    "data_type": "string",
+                    "order": 2,
+                    "description": "Virtual service name",
+                    "required": true
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "example_values": [
+                        "success",
+                        "failed"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.name",
+                    "data_type": "string",
+                    "example_values": [
+                        "test_name"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.port",
+                    "data_type": "numeric",
+                    "example_values": [
+                        22
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.protocol",
+                    "data_type": "string",
+                    "example_values": [
+                        "tcp"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.apply_to",
+                    "data_type": "string",
+                    "example_values": [
+                        "host_only"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.created_at",
+                    "data_type": "string",
+                    "example_values": [
+                        "2022-07-30T11:36:04.014Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.created_by.href",
+                    "data_type": "string",
+                    "example_values": [
+                        "/users/65"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.href",
+                    "data_type": "string",
+                    "example_values": [
+                        "/orgs/1/sec_policy/draft/virtual_services/a62bb999-73ab-42d7-87ab-d493ccc131b6"
+                    ],
+                    "column_name": "Hrefs",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data.*.name",
+                    "data_type": "string",
+                    "example_values": [
+                        "test_vs"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.service_ports.*.port",
+                    "data_type": "numeric",
+                    "example_values": [
+                        22
+                    ],
+                    "column_name": "Port",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.service_ports.*.proto",
+                    "data_type": "numeric",
+                    "example_values": [
+                        6
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.update_type",
+                    "data_type": "string",
+                    "example_values": [
+                        "create"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.updated_at",
+                    "data_type": "string",
+                    "example_values": [
+                        "2022-07-30T11:36:04.017Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.updated_by.href",
+                    "data_type": "string",
+                    "example_values": [
+                        "/users/65"
+                    ]
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "example_values": [
+                        "Successfully created virtual service"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                }
+            ],
+            "render": {
+                "type": "table",
+                "title": "Virtual Service"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "provision objects",
+            "identifier": "provision_objects",
+            "description": "Provisions the specified objects",
+            "type": "generic",
+            "read_only": true,
+            "parameters": {
+                "hrefs": {
+                    "data_type": "string",
+                    "order": 0,
+                    "description": "Object HREFs",
+                    "required": true
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "example_values": [
+                        "success",
+                        "failed"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.hrefs",
+                    "data_type": "string",
+                    "example_values": [
+                        "/orgs/1/sec_policy/draft/virtual_services/a62bb999-73ab-42d7-87ab-d493ccc131b6"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.commit_message",
+                    "data_type": "string",
+                    "example_values": [
+                        "Phantom object provisioning."
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.created_at",
+                    "data_type": "string",
+                    "example_values": [
+                        "2022-07-30T12:16:27.257Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.created_by.href",
+                    "data_type": "string",
+                    "example_values": [
+                        "/users/65"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.href",
+                    "data_type": "string",
+                    "example_values": [
+                        "/orgs/1/sec_policy/1221"
+                    ],
+                    "column_name": "Href",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data.*.object_counts.enforcement_boundaries",
+                    "data_type": "numeric",
+                    "example_values": [
+                        12
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.object_counts.firewall_settings",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.object_counts.ip_lists",
+                    "data_type": "numeric",
+                    "example_values": [
+                        20
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.object_counts.label_groups",
+                    "data_type": "numeric",
+                    "example_values": [
+                        17
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.object_counts.rule_sets",
+                    "data_type": "numeric",
+                    "example_values": [
+                        35
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.object_counts.secure_connect_gateways",
+                    "data_type": "numeric",
+                    "example_values": [
+                        0
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.object_counts.services",
+                    "data_type": "numeric",
+                    "example_values": [
+                        14
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.object_counts.virtual_servers",
+                    "data_type": "numeric",
+                    "example_values": [
+                        0
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.object_counts.virtual_services",
+                    "data_type": "numeric",
+                    "example_values": [
+                        50
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.version",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1221
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.workloads_affected",
+                    "data_type": "numeric",
+                    "example_values": [
+                        0
+                    ]
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "example_values": [
+                        "Successfully provisioned object"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                }
+            ],
+            "render": {
+                "type": "table",
+                "title": "Provision"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "get ip lists",
+            "identifier": "get_ip_lists",
+            "description": "Get ip list of specified name",
+            "type": "investigative",
+            "read_only": true,
+            "parameters": {
+                "name": {
+                    "data_type": "string",
+                    "order": 0,
+                    "description": "Name of IP list",
+                    "required": false
+                },
+                "description": {
+                    "data_type": "string",
+                    "order": 1,
+                    "description": "Description of IP list",
+                    "required": false
+                },
+                "fqdn": {
+                    "data_type": "string",
+                    "order": 2,
+                    "description": "FQDN of IP list",
+                    "required": false
+                },
+                "ip_address": {
+                    "data_type": "string",
+                    "order": 3,
+                    "description": "IP Address linked with IP List",
+                    "required": false
+                }
+            },
+            "render": {
+                "type": "table",
+                "title": "IP List"
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "example_values": [
+                        "success",
+                        "failed"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.description",
+                    "data_type": "string",
+                    "example_values": [
+                        "Acc. test description"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.fqdn",
+                    "data_type": "string",
+                    "example_values": [
+                        "app.example.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.ip_address",
+                    "data_type": "string",
+                    "example_values": [
+                        "10.6.4.226"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.name",
+                    "data_type": "string",
+                    "example_values": [
+                        "test_ip_list"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ip_lists.*.created_at",
+                    "data_type": "string",
+                    "example_values": [
+                        "2019-04-05T19:58:39.545Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ip_lists.*.created_by.href",
+                    "data_type": "string",
+                    "example_values": [
+                        "/users/0"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ip_lists.*.description",
+                    "data_type": "string",
+                    "example_values": [
+                        "Acc. test description"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ip_lists.*.fqdns.*.description",
+                    "data_type": "string",
+                    "example_values": [
+                        "Acc. test fqdn description"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ip_lists.*.fqdns.*.fqdn",
+                    "data_type": "string",
+                    "example_values": [
+                        "app.example.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ip_lists.*.href",
+                    "data_type": "string",
+                    "example_values": [
+                        "/orgs/1/sec_policy/draft/ip_lists/1"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ip_lists.*.ip_ranges.*.description",
+                    "data_type": "string",
+                    "example_values": [
+                        "test ip_ranges description"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ip_lists.*.ip_ranges.*.exclusion",
+                    "data_type": "boolean",
+                    "example_values": [
+                        false
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ip_lists.*.ip_ranges.*.from_ip",
+                    "data_type": "string",
+                    "example_values": [
+                        "0.0.0.0/0"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ip_lists.*.ip_ranges.*.to_ip",
+                    "data_type": "string",
+                    "example_values": [
+                        "10.6.4.226"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ip_lists.*.name",
+                    "data_type": "string",
+                    "example_values": [
+                        "Any (0.0.0.0/0 and ::/0)"
+                    ],
+                    "column_name": "Name",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data.*.ip_lists.*.updated_at",
+                    "data_type": "string",
+                    "example_values": [
+                        "2019-04-05T19:58:39.552Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ip_lists.*.updated_by.href",
+                    "data_type": "string",
+                    "example_values": [
+                        "/users/0"
+                    ]
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "example_values": [
+                        "Successfully fetched IP List"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                }
+            ],
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "create ruleset",
+            "identifier": "create_ruleset",
+            "description": "Create ruleset",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "name": {
+                    "data_type": "string",
+                    "order": 0,
+                    "description": "Name of ruleset",
+                    "required": true
+                }
+            },
+            "render": {
+                "type": "table",
+                "title": "Ruleset"
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "example_values": [
+                        "success",
+                        "failed"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.name",
+                    "data_type": "string",
+                    "example_values": [
+                        "test_rs"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.created_at",
+                    "data_type": "string",
+                    "example_values": [
+                        "2022-08-08T12:46:00.394Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.created_by.href",
+                    "data_type": "string",
+                    "example_values": [
+                        "/users/65"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.enabled",
+                    "data_type": "boolean",
+                    "example_values": [
+                        true
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.href",
+                    "data_type": "string",
+                    "example_values": [
+                        "/orgs/1/sec_policy/draft/rule_sets/1611"
+                    ],
+                    "column_name": "Href",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data.*.name",
+                    "data_type": "string",
+                    "example_values": [
+                        "test_rs"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.rules.*.consumers.*.ip_list.href",
+                    "data_type": "string",
+                    "example_values": [
+                        "/orgs/1/sec_policy/draft/ip_lists/958"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.rules.*.created_at",
+                    "data_type": "string",
+                    "example_values": [
+                        "2022-08-08T12:53:05.428Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.rules.*.created_by.href",
+                    "data_type": "string",
+                    "example_values": [
+                        "/users/65"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.rules.*.enabled",
+                    "data_type": "boolean",
+                    "example_values": [
+                        true
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.rules.*.href",
+                    "data_type": "string",
+                    "example_values": [
+                        "/orgs/1/sec_policy/draft/rule_sets/1611/sec_rules/1914"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.rules.*.machine_auth",
+                    "data_type": "boolean",
+                    "example_values": [
+                        false
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.rules.*.network_type",
+                    "data_type": "string",
+                    "example_values": [
+                        "brn"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.rules.*.providers.*.virtual_service.href",
+                    "data_type": "string",
+                    "example_values": [
+                        "/orgs/1/sec_policy/draft/virtual_services/ce3387fd-703a-4068-a3d2-6e71d63068f4"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.rules.*.sec_connect",
+                    "data_type": "boolean",
+                    "example_values": [
+                        false
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.rules.*.stateless",
+                    "data_type": "boolean",
+                    "example_values": [
+                        false
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.rules.*.unscoped_consumers",
+                    "data_type": "boolean",
+                    "example_values": [
+                        false
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.rules.*.update_type",
+                    "data_type": "string",
+                    "example_values": [
+                        "create"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.rules.*.updated_at",
+                    "data_type": "string",
+                    "example_values": [
+                        "2022-08-08T12:53:05.439Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.rules.*.updated_by.href",
+                    "data_type": "string",
+                    "example_values": [
+                        "/users/65"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.update_type",
+                    "data_type": "string",
+                    "example_values": [
+                        "create"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.updated_at",
+                    "data_type": "string",
+                    "example_values": [
+                        "2022-08-08T12:46:00.394Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.updated_by.href",
+                    "data_type": "string",
+                    "example_values": [
+                        "/users/65"
+                    ]
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "example_values": [
+                        "Successfully created ruleset"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                }
+            ],
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "create rule",
+            "identifier": "create_rule",
+            "description": "Create rule",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "providers": {
+                    "data_type": "string",
+                    "order": 0,
+                    "description": "List of HREFS",
+                    "required": true
+                },
+                "consumers": {
+                    "data_type": "string",
+                    "order": 1,
+                    "description": "List of HREFS",
+                    "required": true
+                },
+                "ruleset_href": {
+                    "data_type": "string",
+                    "order": 2,
+                    "description": "Ruleset HREFS",
+                    "required": true
+                },
+                "resolve_consumers_as": {
+                    "data_type": "string",
+                    "order": 3,
+                    "description": "Consumers",
+                    "required": true
+                },
+                "resolve_providers_as": {
+                    "data_type": "string",
+                    "order": 4,
+                    "description": "Providers",
+                    "required": true
+                }
+            },
+            "render": {
+                "type": "table",
+                "title": "Rules"
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "example_values": [
+                        "success",
+                        "failed"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.consumers",
+                    "data_type": "string",
+                    "example_values": [
+                        "/orgs/1/sec_policy/draft/rule_sets/1611/sec_rules/1914"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.providers",
+                    "data_type": "string",
+                    "example_values": [
+                        "/orgs/1/sec_policy/draft/rule_sets/1611/sec_rules/1914"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.resolve_consumers_as",
+                    "data_type": "string",
+                    "example_values": [
+                        "workloads"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.resolve_providers_as",
+                    "data_type": "string",
+                    "example_values": [
+                        "workloads"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.ruleset_href",
+                    "data_type": "string",
+                    "example_values": [
+                        "/orgs/1/sec_policy/draft/rule_sets/1611/sec_rules/1914"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.consumers.*.ip_list.href",
+                    "data_type": "string",
+                    "example_values": [
+                        "/orgs/1/sec_policy/draft/ip_lists/958"
+                    ],
+                    "column_name": "Consumer",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data.*.created_at",
+                    "data_type": "string",
+                    "example_values": [
+                        "2022-08-08T12:53:05.428Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.created_by.href",
+                    "data_type": "string",
+                    "example_values": [
+                        "/users/65"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.enabled",
+                    "data_type": "boolean",
+                    "example_values": [
+                        true
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.href",
+                    "data_type": "string",
+                    "example_values": [
+                        "/orgs/1/sec_policy/draft/rule_sets/11110/sec_rules/18665"
+                    ],
+                    "column_name": "Href",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.data.*.ingress_services",
+                    "data_type": "string",
+                    "column_name": "Service",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.data.*.machine_auth",
+                    "data_type": "boolean",
+                    "example_values": [
+                        false
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.network_type",
+                    "data_type": "string",
+                    "example_values": [
+                        "brn"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.providers.*.virtual_service.href",
+                    "data_type": "string",
+                    "example_values": [
+                        "/orgs/1/sec_policy/draft/virtual_services/ce3387fd-703a-4068-a3d2-6e71d63068f4"
+                    ],
+                    "column_name": "Provider",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.sec_connect",
+                    "data_type": "boolean",
+                    "example_values": [
+                        false
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.stateless",
+                    "data_type": "boolean",
+                    "example_values": [
+                        false
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.unscoped_consumers",
+                    "data_type": "boolean",
+                    "example_values": [
+                        false
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.update_type",
+                    "data_type": "string",
+                    "example_values": [
+                        "create"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.updated_at",
+                    "data_type": "string",
+                    "example_values": [
+                        "2022-08-08T12:53:05.439Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.updated_by.href",
+                    "data_type": "string",
+                    "example_values": [
+                        "/users/65"
+                    ]
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "example_values": [
+                        "Successfully created rule"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                }
+            ],
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "create service binding",
+            "identifier": "create_service_binding",
+            "description": "Binds workload with virtual service",
+            "type": "generic",
+            "read_only": true,
+            "parameters": {
+                "workload_hrefs": {
+                    "data_type": "string",
+                    "order": 0,
+                    "description": "List of workload HREFS",
+                    "required": true
+                },
+                "virtual_service_href": {
+                    "data_type": "string",
+                    "order": 1,
+                    "description": "Virtual service HREF",
+                    "required": true
+                }
+            },
+            "render": {
+                "type": "table",
+                "title": "Service Binding"
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "example_values": [
+                        "success",
+                        "failed"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.virtual_service_href",
+                    "data_type": "string",
+                    "example_values": [
+                        "/orgs/1/sec_policy/draft/virtual_service/958"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.workload_hrefs",
+                    "data_type": "string",
+                    "example_values": [
+                        "/orgs/1/sec_policy/draft/workload/958"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string",
+                    "example_values": [
+                        "/orgs/1/service_bindings/c7098f30-8460-4873-a06c-8df87dc1ba1d"
+                    ]
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "example_values": [
+                        "message"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                }
+            ],
+            "versions": "EQ(*)"
         }
     ],
     "pip_dependencies": {
         "wheel": [
             {
                 "module": "illumio",
-                "input_file": "wheels/shared/illumio-1.0.0-py3-none-any.whl"
+                "input_file": "wheels/shared/illumio-1.0.3-py3-none-any.whl"
             },
             {
                 "module": "pytz",
