@@ -1,6 +1,6 @@
 # File: illumio_consts.py
 #
-# Copyright (c) 2022 Illumio.
+# Copyright (c) Illumio, 2022
 #
 # This unpublished material is proprietary to Illumio.
 # All rights reserved. The methods and
@@ -22,7 +22,10 @@
 
 PROTOCOL_LIST = ["tcp", "udp"]
 ENFORCEMENT_MODE_LIST = ["idle", "visibility_only", "full", "selective"]
+BOOLEAN_LIST = ["True", "False"]
 PORT_MAX_VALUE = 65535
 ILLUMIO_INVALID_PROTOCOL_MSG = "Please enter a valid value for 'protocol' parameter"
-ILLUMIO_EXISTING_RULE_SET_MSG = "rule_set_name_in_use"
-ILLUMIO_EXISTING_VIRTUAL_SERVICE_MSG = "name_must_be_unique"
+ILLUMIO_EXISTING_OBJECT_MSG = "already in use"
+ILLUMIO_EXISTING_VIRTUAL_SERVICE_MSG = "Name must be unique"
+ILLUMIO_INVALID_VIRTUAL_SERVICE_HREF = "Invalid URI"
+DEFAULT_REQUEST_TIMEOUT = 30  # in seconds
