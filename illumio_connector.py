@@ -342,12 +342,14 @@ class IllumioConnector(BaseConnector):
         )
 
         action_result = self.add_action_result(ActionResult(dict(param)))
+        rule_data = None
 
         ret_val = self.connect_pce(action_result)
         if phantom.is_fail(ret_val):
             return action_result.get_status()
 
         try:
+            message = "Successfully created rule"
             rule = illumio.Rule.build(
                 providers=providers_list,
                 consumers=consumers_list,
@@ -355,7 +357,24 @@ class IllumioConnector(BaseConnector):
                 resolve_consumers_as=resolve_consumers_as_list,
                 ingress_services=[],
             )
-            rule = self._pce.rules.create(rule, parent=ruleset_href)
+
+            list_of_existing_rules_in_ruleset = self._pce.rule_sets.get_by_reference(
+                ruleset_href
+            ).rules
+
+            for rule_obj in list_of_existing_rules_in_ruleset:
+                if (rule_obj.providers == rule.providers) and (
+                    rule_obj.consumers == rule.consumers) and (
+                    rule_obj.resolve_labels_as == rule.resolve_labels_as
+                ):
+                    rule_data = rule_obj
+                    message = "Found existing rule"
+                    break
+
+            if not rule_data:
+                rule_data = self._pce.rules.create(rule, parent=ruleset_href)
+
+            action_result.set_status(phantom.APP_SUCCESS, message)
         except Exception as e:
             return action_result.set_status(
                 phantom.APP_ERROR,
@@ -364,9 +383,7 @@ class IllumioConnector(BaseConnector):
 
         result = self.convert_object_to_json(rule, action_result)
         action_result.add_data(result)
-        return action_result.set_status(
-            phantom.APP_SUCCESS, "Successfully created rule"
-        )
+        return action_result.get_status()
 
     def _handle_create_service_binding(self, param):
         action_result = self.add_action_result(ActionResult(dict(param)))
@@ -772,7 +789,7 @@ class IllumioConnector(BaseConnector):
                     error_message = "Invalid integer value for parameter {}. Please enter value between {} and {}".format(
                         key, min, max
                     )
-            except Exception:
+            except Exception as e:
                 self.debug_print("Encountered error validating integer: {}".format(e))
         return action_result.set_status(phantom.APP_ERROR, error_message), None
 
