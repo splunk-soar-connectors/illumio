@@ -1,6 +1,6 @@
 <!-- File: readme.html
 
-    Copyright (c) 2022 Illumio.
+    Copyright (c) Illumio, 2022
 
     This unpublished material is proprietary to Illumio.
     All rights reserved. The methods and
@@ -421,6 +421,10 @@
             <h3>Get Workloads</h3>
             Gets multiple workloads based on the given search criteria.
             <ul>
+                <li><b>Action Parameter: max_results</b></li>
+                <ul>
+                    <li>This parameter will allow the user to limit the number of workloads to be fetched.</li>
+                </ul>
                 <li><b>Action Parameter: enforcement_mode</b></li>
                 <ul>
                     <li>This parameter will allow the user to select enforcement mode for workload.</li>
@@ -455,10 +459,12 @@
                 </ul>
                 <li><b>Examples:</b>
                     <ul>
-                        <li>Fetch list of workload with name as "test", enforcement_mode "visibility_only", connectivity
+                        <li>Fetch list of 600 workloads with name as "test", enforcement_mode "visibility_only",
+                            connectivity
                             "online", labels "/orgs/1/labels/27380", ip_address "1.1.1.1", description "test workload",
                             hostname "Perf_test 16608" and os_id "ubuntu-x86_64-xenial"</li>
                         <ul>
+                            <li>max_results=600</li>
                             <li>enforcement_mode="visibility_only"</li>
                             <li>connectivity="online</li>
                             <li>name="test"</li>

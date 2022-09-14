@@ -381,7 +381,7 @@ class IllumioConnector(BaseConnector):
                 "Encountered error creating rule: {}".format(e),
             )
 
-        result = self.convert_object_to_json(rule, action_result)
+        result = self.convert_object_to_json(rule_data, action_result)
         action_result.add_data(result)
         return action_result.get_status()
 
@@ -505,6 +505,11 @@ class IllumioConnector(BaseConnector):
                     phantom.APP_ERROR,
                     "Please enter a valid value for 'enforcement_mode' parameter",
                 )
+        ret_val, max_results = self._validate_integer(
+            action_result, param.get("max_results", 500), "max_results"
+        )
+        if phantom.is_fail(ret_val):
+            return action_result.get_status()
         online = param.get("online")
         if online:
             online = online == "True"
@@ -540,6 +545,7 @@ class IllumioConnector(BaseConnector):
                     "description": param.get("description"),
                     "hostname": param.get("hostname"),
                     "os_id": param.get("os_id"),
+                    "max_results": max_results
                 },
             )
         except Exception as e:

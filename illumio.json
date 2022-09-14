@@ -1371,9 +1371,7 @@
                 },
                 {
                     "data_path": "action_result.data.*.ingress_services",
-                    "data_type": "string",
-                    "column_name": "Service",
-                    "column_order": 3
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.data.*.machine_auth",
@@ -1690,6 +1688,12 @@
             "type": "investigative",
             "read_only": true,
             "parameters": {
+                "max_results": {
+                    "data_type": "numeric",
+                    "order": 0,
+                    "description": "Maximum workloads to fetch (Default value is 500)",
+                    "default": 500
+                },
                 "enforcement_mode": {
                     "data_type": "string",
                     "value_list": [
@@ -1698,7 +1702,7 @@
                         "FULL",
                         "SELECTIVE"
                     ],
-                    "order": 0,
+                    "order": 1,
                     "description": "Enforcement mode"
                 },
                 "online": {
@@ -1707,7 +1711,7 @@
                         "True",
                         "False"
                     ],
-                    "order": 1,
+                    "order": 2,
                     "description": "Online"
                 },
                 "managed": {
@@ -1716,22 +1720,22 @@
                         "True",
                         "False"
                     ],
-                    "order": 2,
+                    "order": 3,
                     "description": "Managed"
                 },
                 "name": {
                     "data_type": "string",
-                    "order": 3,
+                    "order": 4,
                     "description": "Workload Name"
                 },
                 "labels": {
                     "data_type": "string",
-                    "order": 4,
+                    "order": 5,
                     "description": "Label HREFs (Comma-seperated values are allowed)"
                 },
                 "public_ip_address": {
                     "data_type": "string",
-                    "order": 5,
+                    "order": 6,
                     "description": "Public IP Address",
                     "primary": true,
                     "contains": [
@@ -1741,17 +1745,17 @@
                 },
                 "description": {
                     "data_type": "string",
-                    "order": 6,
+                    "order": 7,
                     "description": "Workload Description"
                 },
                 "hostname": {
                     "data_type": "string",
-                    "order": 7,
+                    "order": 8,
                     "description": "Hostname"
                 },
                 "os_id": {
                     "data_type": "string",
-                    "order": 8,
+                    "order": 9,
                     "description": "OS ID"
                 }
             },
@@ -1780,6 +1784,13 @@
                     "data_type": "string",
                     "example_values": [
                         "visibility_only"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.max_results",
+                    "data_type": "numeric",
+                    "example_values": [
+                        600
                     ]
                 },
                 {
