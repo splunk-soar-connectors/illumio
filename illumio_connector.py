@@ -335,14 +335,21 @@ class IllumioConnector(BaseConnector):
         consumers_list = self.handle_comma_seperated_string(param["consumers"])
         ruleset_href = param["ruleset_href"]
         resolve_consumers_as_list = self.handle_comma_seperated_string(
-            param["resolve_consumers_as"]
+            param.get("resolve_consumers_as", "workloads")
         )
         resolve_providers_as_list = self.handle_comma_seperated_string(
-            param["resolve_providers_as"]
+            param.get("resolve_providers_as", "workloads")
+        )
+        ingress_services = self.handle_comma_seperated_string(
+            param.get("ingress_services", "")
         )
 
         action_result = self.add_action_result(ActionResult(dict(param)))
         rule_data = None
+
+        ingress_services_list = [
+            {"href": ingress_service} for ingress_service in ingress_services
+        ]
 
         ret_val = self.connect_pce(action_result)
         if phantom.is_fail(ret_val):
@@ -355,7 +362,7 @@ class IllumioConnector(BaseConnector):
                 consumers=consumers_list,
                 resolve_providers_as=resolve_providers_as_list,
                 resolve_consumers_as=resolve_consumers_as_list,
-                ingress_services=[],
+                ingress_services=ingress_services_list,
             )
 
             list_of_existing_rules_in_ruleset = self._pce.rule_sets.get_by_reference(
@@ -365,7 +372,8 @@ class IllumioConnector(BaseConnector):
             for rule_obj in list_of_existing_rules_in_ruleset:
                 if (rule_obj.providers == rule.providers) and (
                     rule_obj.consumers == rule.consumers) and (
-                    rule_obj.resolve_labels_as == rule.resolve_labels_as
+                    rule_obj.resolve_labels_as == rule.resolve_labels_as) and (
+                    rule_obj.ingress_services == rule.ingress_services
                 ):
                     rule_data = rule_obj
                     message = "Found existing rule"
