@@ -24,131 +24,115 @@
 
 <body>
     <p>
-        It is recommended to read the documentation for the app to understand the functioning of the actions and the
-        asset configuration or the action parameters associated with it. For further details, refer to <a
-            href='https://docs.illumio.com/core/21.5/API-Reference/index.html#Illumio-Core' target="_blank">Illumio
-            Docs</a>.
-    </p>
-    <h2>SDK Details</h2>
-    <p>
-        The app uses SDK for communicating with the Illumio server. Below is the SDK version used
-        by the Splunk SOAR Connector.
-    <table>
-        <tr>
-            <th>SDK NAME</th>
-            <th>VERSION</th>
-        </tr>
-        <tr>
-            <td>illumio</td>
-            <td>1.1.0</td>
-        </tr>
-    </table>
+        The Illumio Rapid Ransomware Containment for Splunk SOAR
+        provides selective port-blocking through integration with the Illumio Policy Compute Engine (PCE).
     </p>
     <p>
-    <h2>Steps to Configure the Illumio Phantom app's asset</h2>
+        This Readme explains the actions this app provides, and the
+        asset configuration or action parameters associated with it. For further details, refer to <a
+            href='https://docs.illumio.com/core/21.5/API-Reference/index.html#Illumio-Core' target="_blank">the Illumio
+            Core API Reference</a> on the Illumio Documentation Portal.
+    </p>
+    <h2>SDK Version</h2>
     <p>
-        Follow these steps to create an asset for the app in Phantom Platform:
+        The app uses Illumio SDK version 1.1.3 for communicating with the Illumio PCE.
+    </p>
+    <p>
+    <h2>Configuring Assets</h2>
+    <p>
+        Follow these steps to create an Illumio app asset for your Splunk SOAR Platform:
     <ul>
-        <li>Log in to the Illumio Policy Compute Engine.</li>
-        <ul>
-            <li>Once logged in, user's name is shown on top-right corner with dropdown where you find <b>My API Keys</b>
-                option.</li>
-            <li>Please select the <b>My API Keys</b> option.</li>
-            <li>Click on <b>Add</b> button on top-left corner, a dialog box will be shown which accepts name and
-                description.</b></li>
-            <li>Enter unique name for your API key and click on <b>create</b> button to create new API key.</li>
-            <li>On successfully creating a new API key, another dialog box will be shown containing the <b>Key
-                    ID</b> and <b>Secret</b>.</li>
-            <li>Copy the <b>Secret</b> value from the dialog box and paste it into any text editor as backup, as it
-                won't
-                be visible again. Once copied, click on Close.</li>
-            <li>This secret value is the <b>API Secret</b> and <b>Authentication Username</b> value is the <b>API
-                    Key</b> that will be used in the asset.</li>
-            <li>Also store the Base URL and port from the URL.</li>
-            <li>Double click on the selected API key to get the Org ID</li>
-        </ul>
-        <li>Log in to your Phantom platform.</li>
+        <li>Log into the Illumio Policy Compute Engine (PCE).</li>
+        <ol>
+            <li>Click the user name drop-down in the top-right corner of the PCE interface, and select <b>My API Keys</b> from the menu.</li>
+            <li>The 'API Keys' page opens. Click <b>Add</b>.</li>
+            <li>The 'Create API Key' page opens. Enter a unique Name for your API key and an optional Description.</li>
+            <li>Note the <b>Org ID</b> value in the dialog, as you will need it later when configuring the asset.</li>
+            <li>Click <b>Create</b> to create the new API key.</li>
+            <li>After successfully creating a new API key, the 'API Key Created' dialog is shown, containing the <b>Key ID</b> and <b>Secret</b>.</li>
+            <li>Note the <b>Authentication Username</b> and <b>Secret</b> values from the dialog box, and click <b>Download Credentials</b> to store a backup
+                in a secure location, as the <b>Secret</b> value will not be visible again once the dialog is closed. Once saved, click <b>Close</b>.
+            <p>This secret value is the <b>API Secret</b>, and the <b>Authentication Username</b> value is the <b>API Key</b> that will be used in the asset.</p></li>
+        </ol>
+        <li>Log in to your Splunk SOAR platform.</li>
         <ul>
             <li>Navigate to the <b>Home</b> dropdown and select <b>Apps</b>.</li>
             <li>Search the Illumio App from the search box.</li>
             <li>Click on the <b>CONFIGURE NEW ASSET</b> button.</li>
             <li>Navigate to the <b>Asset Info</b> tab and enter the Asset name and Asset description.</li>
             <li>Navigate to the <b>Asset Settings</b> tab.</li>
-            <li>Paste the <b>API Key, API Secret, Hostname, Port, and Org ID</b> from Illumio to its respective
-                configuration parameter.</li>
+            <li>Enter the <b>API Key, API Secret, and Org ID</b> values from the previous step to their respective configuration parameters.</li>
+            <li>Enter the PCE FQDN and HTTPS port as the <b>Host</b> and <b>Port</b> parameters respectively.</li>
             <li>Save the asset.</li>
-            <li>Now, test the connectivity of the Phantom server to the Illumio instance by clicking on the <b>TEST
-                    CONNECTIVITY</b> button.</li>
+            <li>Now, test the connectivity of the Splunk SOAR server to the Illumio instance by clicking on the <b>TEST CONNECTIVITY</b> button.</li>
         </ul>
     </ul>
     </p>
-    <h2>Explanation of the Asset Configuration Parameters</h2>
-    The asset configuration parameters affect 'test connectivity' and some other actions of the application. The
-    parameters related to test connectivity action are Illumio API Key, API Secret, Hostname, Port and Org ID.
+    <h2>Asset Configuration Parameters</h2>
     <ul>
         <li>
-            <b>API Key: </b> The API Key Username for the key created in the previous steps.
+            <b>API Key:</b> The API key name for the key created in the previous steps.
         </li>
         <li>
-            <b>API Secret</A>: </b> API Secret for asset authorization.
+            <b>API Secret:</b> The API secret for asset authentication.
         </li>
         <li>
-            <b>Hostname</A>: </b> Name of host where PCE is hosted.
+            <b>Hostname:</b> The PCE fully-qualified domain name.
         </li>
         <li>
-            <b>Port</A>: </b> Port number where PCE is hosted.
+            <b>Port:</b> The HTTPS port number on which the PCE is hosted.
         </li>
         <li>
-            <b>Org ID</A>: </b> ID number of organization in PCE.
+            <b>Org ID:</b> ID number of your organization in the PCE.
         </li>
     </ul>
     </p>
-    <p>
-    <h2>Explanation of the Illumio Actions' Parameters</h2>
+    <h2>Illumio Action Parameters</h2>
     <ul>
         <li>
             <h3>Test Connectivity (Action Workflow Details)</h3>
             <ul>
-                <li> This action will test the connectivity of the Phantom server to the Illumio instance by using the
+                <li> This action tests the connectivity of the Phantom server to the Illumio instance by using the
                     provided asset configuration parameters. </li>
                 <li> The action validates the provided asset configuration parameters. Based on the response from the
-                    SDK method, the appropriate success and failure message will be displayed when the
-                    action gets executed.</li>
+                    SDK method, the appropriate success and failure message is displayed when the
+                    action is executed.</li>
             </ul>
         </li>
         <li>
             <h3>Get Traffic Analysis</h3>
-            Runs an explorer query to get a traffic analysis report based on the provided inputs. The query checks all
+            Runs an Explorer query to get a traffic analysis report based on the provided inputs. The query checks all
             sources and destinations for traffic on a given port.
+            <p>The following parameters for this action are supported:</p>
             <ul>
-                <li><b>Action Parameter: Start Time</b></li>
+                <li><b>Start Time</b></li>
                 <ul>
-                    <li>This parameter will accept the start datetime for a traffic. An error message will be
-                        shown if the datetime is invalid. Start time support human readable or ISO datetime values.</li>
+                    <li>This parameter accepts the start datetime for the traffic analysis. An error message is
+                        shown if the datetime is invalid. Start Time supports human readable or ISO datetime values.</li>
                 </ul>
-                <li><b>Action Parameter: End Time</b></li>
+                <li><b>End Time</b></li>
                 <ul>
-                    <li>This parameter will accept the end datetime for a traffic. An error message will be
-                        shown if the datetime is invalid. End time support human readable or ISO datetime values.</li>
+                    <li>This parameter accepts the end datetime for the traffic analysis. An error message is
+                        shown if the datetime is invalid. End Time supports human readable or ISO datetime values.</li>
                 </ul>
-                <li><b>Action Parameter: Port</b></li>
+                <li><b>Port</b></li>
                 <ul>
-                    <li>This parameter will accept the port value for a traffic. It expects a numeric value as an
-                        input. An error message will be shown if the port value is invalid.</li>
+                    <li>This parameter accepts the port value for traffic. It expects a numeric value as an
+                        input. An error message is shown if the port value is invalid.</li>
                 </ul>
-                <li><b>Action Parameter: Protocol</b></li>
+                <li><b>Protocol</b></li>
                 <ul>
                     <li>This parameter allows the user to select TCP or UDP as protocol for traffic. The default value
                         is TCP.</li>
                 </ul>
-                <li><b>Action Parameter: Policy Decisions</b></li>
+                <li><b>Policy Decisions</b></li>
                 <ul>
-                    <li>This parameter is used to filter out the traffic based on policy decisions. An error message
-                        will be shown if the policy decision is invalid.</li>
+                    <li>This parameter filters the traffic based on policy decisions. An error message
+                        is shown if the policy decision is invalid. Valid values are <b>allowed</b>, <b>potentially_blocked</b>, <b>blocked</b>, and <b>unknown</b></li>
                 </ul>
                 <li><b>Examples:</b>
                     <ul>
-                        <li>Retrieve traffic for between 01 July, 2022 to 10 July, 2022 on 22 TCP and having policy
+                        <li>Retrieve traffic from between 01 July, 2022 to 10 July, 2022 on 22 TCP and having policy
                             decision potentially_blocked.
                             <ul>
                                 <li>Start Time = "2022-07-01T17:45:08" </li>
@@ -165,24 +149,25 @@
         <li>
             <h3>Create Virtual Service</h3>
             Creates a virtual service.
+            <p>The following parameters for this action are supported:</p>
             <ul>
-                <li><b>Action Parameter: Port</b></li>
+                <li><b>Port</b></li>
                 <ul>
-                    <li>This parameter will accept the port value for a virtual service. It expects a numeric value as
-                        an input. An error message will be shown if the port value is invalid.</li>
+                    <li>This parameter accepts the port value for the virtual service. It expects a numeric value as
+                        an input. An error message is shown if the port value is invalid.</li>
                 </ul>
-                <li><b>Action Parameter: Protocol</b></li>
+                <li><b>Protocol</b></li>
                 <ul>
-                    <li>This parameter allows the user to select TCP or UDP from dropdown as protocol for virtual
-                        service</li>
+                    <li>This parameter allows the user to select TCP or UDP from a drop-down menu as the protocol for the virtual
+                        service.</li>
                 </ul>
-                <li><b>Action Parameter: Name</b></li>
+                <li><b>Name</b></li>
                 <ul>
-                    <li>This parameter will accept the name for a virtual service.</li>
+                    <li>This parameter specifies the name for the new virtual service.</li>
                 </ul>
                 <li><b>Examples:</b>
                     <ul>
-                        <li>Create new virtual service with name "test-vs" on port 22 and protocol "TCP".
+                        <li>Create a new virtual service with name "test-vs" on port 22 and protocol "TCP".
                             <ul>
                                 <li>Port = 22</li>
                                 <li>Protocol = "TCP"</li>
@@ -196,24 +181,25 @@
         <li>
             <h3>Create Service Binding</h3>
             <p>
-                Binds one or more workloads to virtual service. The virtual service must be provisioned into active
+                Binds one or more workloads to a virtual service. The virtual service must be provisioned into the active
                 state
                 to bind a workload to it.
             </p>
+            <p>The following parameters for this action are supported:</p>
 
             <ul>
-                <li><b>Action Parameter: Workload hrefs</b></li>
+                <li><b>Workload hrefs</b></li>
                 <ul>
                     <li>
-                        This parameter will accept the href of workload for a getting bind to virtual service. It
-                        accepts comma seperated workload hrefs. An error message will be shown if the href value is
+                        This parameter accepts the href of one or more workloads to be bound to a virtual service. It
+                        accepts multiple comma-seperated workload hrefs. An error message is shown if any href value is
                         invalid.
                     </li>
                 </ul>
-                <li><b>Action Parameter: Virtual Service href</b></li>
+                <li><b>Virtual Service href</b></li>
                 <ul>
                     <li>
-                        This parameter will accept the href of virtual service for binding. An error message will be
+                        This parameter accepts the href of a virtual service for binding. An error message is
                         shown if the href value is invalid.
                     </li>
                 </ul>
@@ -239,28 +225,29 @@
         </li>
         <li>
             <h3>Get IP Lists</h3>
-            Gets list of IP list objects.
+            Gets a list of IP list objects.
+            <p>The following parameters for this action are supported:</p>
             <ul>
-                <li><b>Action Parameter: name</b></li>
+                <li><b>name</b></li>
                 <ul>
-                    <li>This parameter will accept name of ip list.</li>
+                    <li>This parameter accepts the name of an IP list.</li>
                 </ul>
-                <li><b>Action Parameter: description</b></li>
+                <li><b>description</b></li>
                 <ul>
-                    <li>This parameter will accept description of ip list.</li>
+                    <li>This parameter accepts a description of an IP list.</li>
                 </ul>
-                <li><b>Action Parameter: fqdn</b></li>
+                <li><b>fqdn</b></li>
                 <ul>
-                    <li>This parameter will accept the fqdn value of ip list.</li>
+                    <li>This parameter accepts the FQDN value of an IP list.</li>
                 </ul>
-                <li><b>Action Parameter: ip_address</b></li>
+                <li><b>ip_address</b></li>
                 <ul>
-                    <li>This parameter will accept the ip address value attached to ip list.</li>
+                    <li>This parameter accepts the IP address value attached to an IP list.</li>
                 </ul>
                 <li><b>Examples:</b>
                     <ul>
-                        <li>Retrive IP Lists with ip address as 1.1.1.1, name as "iplist1", description as "test iplist"
-                            and fqdn as "www.illumio.com".</li>
+                        <li>Retrive IP lists with IP address as 1.1.1.1, name as "iplist1", description as "test iplist"
+                            and FQDN as "www.illumio.com:"</li>
                         <ul>
                             <li>name="iplist1"</li>
                             <li>description = "test iplist"</li>
@@ -274,14 +261,15 @@
         <li>
             <h3>Create Ruleset</h3>
             Creates a ruleset security policy object.
+            <p>The following parameters for this action are supported:</p>
             <ul>
-                <li><b>Action Parameter: name</b></li>
+                <li><b>name</b></li>
                 <ul>
-                    <li>This parameter will accept name for creating new ruleset.</li>
+                    <li>This parameter accepts the name for the new ruleset.</li>
                 </ul>
                 <li><b>Examples:</b>
                     <ul>
-                        <li>Create new ruleset with name "test-rs"</li>
+                        <li>Create a new ruleset named "test-rs:"</li>
                         <ul>
                             <li>name="test-rs"</li>
                         </ul>
@@ -292,30 +280,27 @@
         <li>
             <h3>Create Rule</h3>
             Creates a policy rule within a given ruleset.
+            <p>The following parameters for this action are supported:</p>
             <ul>
-                <li><b>Action Parameter: consumer</b></li>
+                <li><b>consumer</b></li>
                 <ul>
-                    <li>This parameter will accept href of consumers for creating new rule.</li>
+                    <li>This parameter accepts the href of consumers when creating a new rule.</li>
                 </ul>
-                <li><b>Action Parameter: provider</b></li>
+                <li><b>provider</b></li>
                 <ul>
-                    <li>This parameter will accept href of providers for creating new rule.</li>
+                    <li>This parameter accepts the href of providers when creating a new rule.</li>
                 </ul>
-                <li><b>Action Parameter: ruleset_href</b></li>
+                <li><b>ruleset_href</b></li>
                 <ul>
-                    <li>This parameter will accept href of parent ruleset for creating new rule.</li>
+                    <li>This parameter accepts the href of parent ruleset when creating a new rule.</li>
                 </ul>
-                <li><b>Action Parameter: resolve_consumers_as</b></li>
+                <li><b>resolve_consumers_as</b></li>
                 <ul>
-                    <li>This parameter will accept value for consumer to resolve rule.</li>
+                    <li>This parameter accepts a value for the consumer to resolve rule.</li>
                 </ul>
-                <li><b>Action Parameter: resolve_providers_as</b></li>
+                <li><b>resolve_providers_as</b></li>
                 <ul>
-                    <li>This parameter will accept value for provider to resolve rule.</li>
-                </ul>
-                <li><b>Action Parameter: ingress_services</b></li>
-                <ul>
-                    <li>This parameter will accept href for ingress services.</li>
+                    <li>This parameter accepts a value for the provider to resolve rule.</li>
                 </ul>
                 <li><b>Examples:</b>
                     <ul>
@@ -333,7 +318,6 @@
                             <li>ruleset_href="/orgs/1/sec_policy/draft/rule_sets/1611"</li>
                             <li>resolve_providers_as="virtual_services"</li>
                             <li>resolve_consumers_as="workloads"</li>
-                            <li>ingress_services=""</li>
                         </ul>
                     </ul>
                 </li>
@@ -341,26 +325,27 @@
         </li>
         <li>
             <h3>Create Enforcement Boundary</h3>
-            Creates an enforcement boundary with an ingress service using the given port/protocol.
+            Creates an enforcement boundary with an ingress service using the given port and protocol.
+            <p>The following parameters for this action are supported:</p>
             <ul>
-                <li><b>Action Parameter: consumer</b></li>
+                <li><b>consumer</b></li>
                 <ul>
-                    <li>This parameter will accept href of consumers for creating new enforcement boundary.</li>
+                    <li>This parameter accepts the href of consumers for creating new enforcement boundary.</li>
                 </ul>
-                <li><b>Action Parameter: provider</b></li>
+                <li><b>provider</b></li>
                 <ul>
-                    <li>This parameter will accept href of providers for creating new enforcement boundary.</li>
+                    <li>This parameter accepts the href of providers for creating new enforcement boundary.</li>
                 </ul>
-                <li><b>Action Parameter: name</b></li>
+                <li><b>name</b></li>
                 <ul>
-                    <li>This parameter will accept name value for creating new enforcement boundary.</li>
+                    <li>This parameter accepts a name for creating new enforcement boundary.</li>
                 </ul>
-                <li><b>Action Parameter: port</b></li>
+                <li><b>port</b></li>
                 <ul>
-                    <li>This parameter will accept the port value for a virtual service. It expects a numeric value as
-                        an input. An error message will be shown if the port value is invalid.</li>
+                    <li>This parameter accepts the port value for a virtual service. It expects a numeric value as
+                        an input. An error message is shown if the port value is invalid.</li>
                 </ul>
-                <li><b>Action Parameter: protocol</b></li>
+                <li><b>protocol</b></li>
                 <ul>
                     <li>This parameter allows the user to select TCP or UDP from dropdown as protocol for virtual
                         service</li>
@@ -385,17 +370,24 @@
         <li>
             <h3>Update Enforcement Mode</h3>
             Updates the enforcement mode for one or more workloads.
+            <p>The following parameters for this action are supported:</p>
             <ul>
-                <li><b>Action Parameter: workload_hrefs</b></li>
+                <li><b>workload_hrefs</b></li>
                 <ul>
-                    <li>This parameter will accept list of workload href for updating enforcement mode.</li>
+                    <li>This parameter accepts a list of workload HREFs for updating their enforcement mode.</li>
+                </ul>
+                <li><b>enforcement_mode</b></li>
+                <ul>
+                    <li>The enforcement mode to apply to the workloads specified by <b>workload_hrefs</b>. Valid values are
+                    <b>idle</b>, <b>visibility_only</b>, <b>selective</b>, and <b>full</b>.</li>
                 </ul>
                 <li><b>Examples:</b>
                     <ul>
-                        <li>Update enforcement mode of workload "/orgs/1/workloads/bd004cd5-f37c-4823-9ec9-cb1773dd11fc"
+                        <li>Update enforcement mode of workload "/orgs/1/workloads/bd004cd5-f37c-4823-9ec9-cb1773dd11fc" to "selective"
                         </li>
                         <ul>
-                            <li>consumer="/orgs/1/workloads/bd004cd5-f37c-4823-9ec9-cb1773dd11fc"</li>
+                            <li>workload_hrefs="/orgs/1/workloads/bd004cd5-f37c-4823-9ec9-cb1773dd11fc"</li>
+                            <li>enforcement_mode="selective"</li>
                         </ul>
                     </ul>
                 </li>
@@ -404,10 +396,11 @@
         <li>
             <h3>Provision Objects</h3>
             Provision draft policy changes for the given security policy objects.
+            <p>The following parameters for this action are supported:</p>
             <ul>
-                <li><b>Action Parameter: hrefs</b></li>
+                <li><b>hrefs</b></li>
                 <ul>
-                    <li>This parameter will accept list of href for provisioning.</li>
+                    <li>This parameter accepts a list of HREFs for provisioning.</li>
                 </ul>
                 <li><b>Examples:</b>
                     <ul>
@@ -425,46 +418,47 @@
         <li>
             <h3>Get Workloads</h3>
             Gets multiple workloads based on the given search criteria.
+            <p>The following parameters for this action are supported:</p>
             <ul>
-                <li><b>Action Parameter: max_results</b></li>
+                <li><b>max_results</b></li>
                 <ul>
-                    <li>This parameter will allow the user to limit the number of workloads to be fetched.</li>
+                    <li>This parameter allows the user to limit the number of workloads to be fetched.</li>
                 </ul>
-                <li><b>Action Parameter: enforcement_mode</b></li>
+                <li><b>enforcement_mode</b></li>
                 <ul>
-                    <li>This parameter will allow the user to select enforcement mode for workload.</li>
+                    <li>This parameter allows the user to select the enforcement mode for the selected workloads.</li>
                 </ul>
-                <li><b>Action Parameter: connectivity</b></li>
+                <li><b>connectivity</b></li>
                 <ul>
-                    <li>This parameter will allow the user to select connectivity for workload.</li>
+                    <li>This parameter allows the user to select connectivity for the selected workloads.</li>
                 </ul>
-                <li><b>Action Parameter: name</b></li>
+                <li><b>name</b></li>
                 <ul>
-                    <li>This parameter will accept name value for workload.</li>
+                    <li>This parameter accepts a name value for the selected workloads.</li>
                 </ul>
-                <li><b>Action Parameter: labels</b></li>
+                <li><b>labels</b></li>
                 <ul>
-                    <li>This parameter will accept list of labels for workload.</li>
+                    <li>This parameter accepts a list of labels for the selected workloads.</li>
                 </ul>
-                <li><b>Action Parameter: ip_address</b></li>
+                <li><b>ip_address</b></li>
                 <ul>
-                    <li>This parameter will accept ip address value for workload.</li>
+                    <li>This parameter accepts an IP address value for the selected workloads.</li>
                 </ul>
-                <li><b>Action Parameter: description</b></li>
+                <li><b>description</b></li>
                 <ul>
-                    <li>This parameter will accept description for workload.</li>
+                    <li>This parameter accepts a description for the selected workloads.</li>
                 </ul>
-                <li><b>Action Parameter: hostname</b></li>
+                <li><b>hostname</b></li>
                 <ul>
-                    <li>This parameter will accept hostname value for workload.</li>
+                    <li>This parameter accepts a hostname value for the selected workloads.</li>
                 </ul>
-                <li><b>Action Parameter: os_id</b></li>
+                <li><b>os_id</b></li>
                 <ul>
-                    <li>This parameter will accept os_id for workload.</li>
+                    <li>This parameter accepts the os_id value for the selected workloads.</li>
                 </ul>
                 <li><b>Examples:</b>
                     <ul>
-                        <li>Fetch list of 600 workloads with name as "test", enforcement_mode "visibility_only",
+                        <li>Fetch a list of 600 workloads with name as "test", enforcement_mode "visibility_only",
                             connectivity
                             "online", labels "/orgs/1/labels/27380", ip_address "1.1.1.1", description "test workload",
                             hostname "Perf_test 16608" and os_id "ubuntu-x86_64-xenial"</li>
