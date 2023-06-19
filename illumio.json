@@ -10,6 +10,14 @@
     "python_version": "3",
     "product_version_regex": ".*",
     "publisher": "Illumio",
+    "contributors": [
+        {
+            "name": "Yash Chauhan"
+        },
+        {
+            "name": "Duncan Sommerville"
+        }
+    ],
     "license": "Copyright (c) Illumio, 2023",
     "app_version": "1.0.0",
     "utctime_updated": "2022-07-19T07:24:45.112655Z",
@@ -18,7 +26,7 @@
     "min_phantom_version": "5.3.0",
     "app_wizard_version": "1.0.0",
     "latest_tested_versions": [
-        "Illumio 21.2, Cloud, 29th August 2022"
+        "Illumio 22.5, Cloud, 19th June 2023"
     ],
     "configuration": {
         "hostname": {
