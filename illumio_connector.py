@@ -1,6 +1,6 @@
 # File: illumio_connector.py
 #
-# Copyright (c) Illumio, 2022
+# Copyright (c) Illumio, 2023
 #
 # This unpublished material is proprietary to Illumio.
 # All rights reserved. The methods and
@@ -21,21 +21,21 @@
 # and limitations under the License.
 
 
+import ipaddress
+import json
+import sys
+from datetime import datetime
+
 # Phantom App imports
 import phantom.app as phantom
+import pytz
+import requests
+from dateutil.parser import parse
+from phantom.action_result import ActionResult
 from phantom.base_connector import BaseConnector
 
-from phantom.action_result import ActionResult
-
-from illumio_consts import *
-import sys
-import ipaddress
-import requests
-import json
 import illumio
-from datetime import datetime
-from dateutil.parser import parse
-import pytz
+from illumio_consts import *
 
 
 class IllumioConnector(BaseConnector):
