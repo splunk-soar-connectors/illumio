@@ -579,6 +579,13 @@ class IllumioConnector(BaseConnector):
         workload_hrefs_list = self.handle_comma_seperated_string(
             param["workload_hrefs"]
         )
+        enforcement_mode = param.get("enforcement_mode", "")
+        enforcement_mode = enforcement_mode.lower()
+        if not enforcement_mode or enforcement_mode not in ENFORCEMENT_MODE_LIST:
+            return action_result.set_status(
+                phantom.APP_ERROR,
+                "Please enter a valid value for 'enforcement_mode' parameter",
+            )
 
         ret_val = self.connect_pce(action_result)
         if phantom.is_fail(ret_val):
@@ -588,7 +595,7 @@ class IllumioConnector(BaseConnector):
             response = self._pce.workloads.bulk_update(
                 [
                     {
-                        "enforcement_mode": "selective",
+                        "enforcement_mode": enforcement_mode,
                         "href": workload,
                     }
                     for workload in workload_hrefs_list

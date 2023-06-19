@@ -1,7 +1,7 @@
 {
     "appid": "33ff9d67-3ac0-4be3-b489-b2b4e729db79",
-    "name": "Illumio",
-    "description": "This app integrates with the Illumino to implement containment actions to block a port/protocol",
+    "name": "Illumio Rapid Ransomware Containment",
+    "description": "This app integrates with the Illumio Policy Compute Engine to implement actions for automating workload containment",
     "type": "network security",
     "product_vendor": "Illumio",
     "logo": "logo_illumio.svg",
@@ -20,7 +20,7 @@
     ],
     "license": "Copyright (c) Illumio, 2023",
     "app_version": "1.0.0",
-    "utctime_updated": "2022-07-19T07:24:45.112655Z",
+    "utctime_updated": "2023-06-19T19:36Z",
     "package_name": "phantom_illumio",
     "main_module": "illumio_connector.py",
     "min_phantom_version": "5.3.0",
@@ -2395,6 +2395,12 @@
                     "contains": [
                         "illumio workload href"
                     ]
+                },
+                "enforcement_mode": {
+                    "data_type": "string",
+                    "order": 1,
+                    "description": "Enforcement mode to apply to the given Workloads",
+                    "required": true
                 }
             },
             "render": {
@@ -2418,6 +2424,13 @@
                     ],
                     "contains": [
                         "illumio workload href"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.enforcement_mode",
+                    "data_type": "string",
+                    "example_values": [
+                        "selective"
                     ]
                 },
                 {
