@@ -6,7 +6,7 @@ Connector Version: 1.0.0
 Product Vendor: Illumio  
 Product Name: Illumio  
 Product Version Supported (regex): ".\*"  
-Minimum Product Version: 5.3.0  
+Minimum Product Version: 5.5.0  
 
 This app integrates with the Illumio Policy Compute Engine to implement actions for automating workload containment
 
@@ -37,7 +37,7 @@ integration with the Illumio Policy Compute Engine (PCE).
 
 This Readme explains the actions this app provides, and the asset configuration or action parameters
 associated with it. For further details, refer to [the Illumio Core API
-Reference](https://docs.illumio.com/core/21.5/API-Reference/index.html#Illumio-Core) on the Illumio
+Reference](https://docs.illumio.com/core/22.5/API-Reference/index.html#Illumio-Core) on the Illumio
 Documentation Portal.
 
 ## SDK Version
@@ -526,7 +526,7 @@ VARIABLE | REQUIRED | TYPE | DESCRIPTION
 -------- | -------- | ---- | -----------
 **hostname** |  required  | string | Hostname
 **port** |  required  | numeric | Port
-**api_key** |  required  | string | API Key
+**api_key** |  required  | password | API Key
 **api_secret** |  required  | password | API Secret
 **org_id** |  required  | numeric | Org ID
 
@@ -558,7 +558,7 @@ No Output
 ## action: 'get traffic analysis'
 List of traffic on specified port
 
-Type: **investigative**  
+Type: **investigate**  
 Read only: **True**
 
 Allowed values for 'policy_decisions' parameter are: allowed, unknown, potentially_blocked, and blocked. Valid date format allowed: MM/DD/YYYY hh:mm:ss and YYYY/MM/DD hh:mm:ss. Supported timezone offset format for parameters 'start_time' and 'end_time' are Z(UTC), HH:MM, HHMM and HH.
@@ -688,7 +688,7 @@ summary.total_objects_successful | numeric |  |   1
 ## action: 'get ip lists'
 Get IP list of specified name
 
-Type: **investigative**  
+Type: **investigate**  
 Read only: **True**
 
 #### Action Parameters
@@ -852,7 +852,7 @@ summary.total_objects_successful | numeric |  |   1
 ## action: 'get workloads'
 Gets list of workloads for a given enforcement mode
 
-Type: **investigative**  
+Type: **investigate**  
 Read only: **True**
 
 #### Action Parameters
