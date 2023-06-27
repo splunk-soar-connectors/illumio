@@ -1,5 +1,5 @@
 [comment]: # "Auto-generated SOAR connector documentation"
-# Illumio Rapid Ransomware Containment
+# Illumio
 
 Publisher: Illumio  
 Connector Version: 1.0.0  
@@ -32,8 +32,8 @@ This app integrates with the Illumio Policy Compute Engine to implement actions 
 [comment]: # "    either express or implied. See the License for the specific language governing permissions"
 [comment]: # "    and limitations under the License."
 [comment]: # ""
-The Illumio Rapid Ransomware Containment for Splunk SOAR provides selective port-blocking through
-integration with the Illumio Policy Compute Engine (PCE).
+The Illumio connector for Splunk SOAR provides selective port-blocking through integration with the
+Illumio Policy Compute Engine (PCE).
 
 This Readme explains the actions this app provides, and the asset configuration or action parameters
 associated with it. For further details, refer to [the Illumio Core API
