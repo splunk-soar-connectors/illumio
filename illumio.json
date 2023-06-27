@@ -1,6 +1,6 @@
 {
     "appid": "33ff9d67-3ac0-4be3-b489-b2b4e729db79",
-    "name": "Illumio Rapid Ransomware Containment",
+    "name": "Illumio",
     "description": "This app integrates with the Illumio Policy Compute Engine to implement actions for automating workload containment",
     "type": "network security",
     "product_vendor": "Illumio",
