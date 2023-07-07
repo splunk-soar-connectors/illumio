@@ -1,6 +1,6 @@
 # File: __init__.py
 #
-# Copyright (c) 2023 Illumio.
+# Copyright (c) Illumio, 2023
 #
 # This unpublished material is proprietary to Illumio.
 # All rights reserved. The methods and
