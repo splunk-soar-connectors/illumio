@@ -293,7 +293,7 @@ class IllumioConnector(BaseConnector):
             return action_result.get_status()
 
         try:
-            self.debug_print("Creating rule set '{}'".format(name))
+            self.debug_print("Creating ruleset '{}'".format(name))
             rule_set = illumio.RuleSet(name=name, scopes=[illumio.LabelSet(labels=[])])
             rule_set = self._pce.rule_sets.create(rule_set)
             action_result.set_status(
@@ -356,7 +356,7 @@ class IllumioConnector(BaseConnector):
             return action_result.get_status()
 
         try:
-            self.debug_print("Creating rule in rule set '{}'".format(ruleset_href))
+            self.debug_print("Creating rule in ruleset '{}'".format(ruleset_href))
             message = "Successfully created rule"
             rule = illumio.Rule.build(
                 providers=providers_list,
