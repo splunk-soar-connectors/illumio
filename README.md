@@ -103,8 +103,8 @@ Follow these steps to create an Illumio app asset for your Splunk SOAR Platform:
 
 -   ### Test Connectivity (Action Workflow Details)
 
-    -   This action tests the connectivity of the Phantom server to the Illumio instance by using
-        the provided asset configuration parameters.
+    -   This action tests the connectivity of the Splunk SOAR server to the Illumio instance by
+        using the provided asset configuration parameters.
     -   The action validates the provided asset configuration parameters. Based on the response from
         the SDK method, the appropriate success and failure message is displayed when the action is
         executed.
@@ -224,6 +224,7 @@ Follow these steps to create an Illumio app asset for your Splunk SOAR Platform:
             "/orgs/1/sec_policy/active/virtual_services/ce3387fd-703a-4068-a3d2-6e71d63068f4"
 
               
+            .
 
             -   Workload hrefs =
                 "/orgs/1/workloads/abd71956-0953-4a3f-b7f7-9aecaebbc358,/orgs/1/workloads/6ee0434b-46a8-48e3-b813-bdde9ccb1c41"
