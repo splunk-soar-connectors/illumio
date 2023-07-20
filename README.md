@@ -2,7 +2,7 @@
 # Illumio
 
 Publisher: Illumio  
-Connector Version: 1.0.0  
+Connector Version: 1.0.1  
 Product Vendor: Illumio  
 Product Name: Illumio  
 Product Version Supported (regex): ".\*"  
