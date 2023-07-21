@@ -1,7 +1,7 @@
 [comment]: # "Auto-generated SOAR connector documentation"
 # Illumio
 
-Publisher: Illumio  
+Publisher: Splunk Community  
 Connector Version: 1.0.1  
 Product Vendor: Illumio  
 Product Name: Illumio  
