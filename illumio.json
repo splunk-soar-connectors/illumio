@@ -10,7 +10,7 @@
     "python_version": "3",
     "fips_compliant": false,
     "product_version_regex": ".*",
-    "publisher": "Illumio",
+    "publisher": "Splunk Community",
     "contributors": [
         {
             "name": "Yash Chauhan"
