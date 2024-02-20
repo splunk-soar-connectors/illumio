@@ -24,7 +24,7 @@
     "utctime_updated": "2023-06-19T19:36Z",
     "package_name": "phantom_illumio",
     "main_module": "illumio_connector.py",
-    "min_phantom_version": "5.5.0",
+    "min_phantom_version": "6.1.1",
     "app_wizard_version": "1.0.0",
     "latest_tested_versions": [
         "Illumio 22.5, Cloud, 19th June 2023"

@@ -6,7 +6,7 @@ Connector Version: 1.0.1
 Product Vendor: Illumio  
 Product Name: Illumio  
 Product Version Supported (regex): ".\*"  
-Minimum Product Version: 5.5.0  
+Minimum Product Version: 6.1.1  
 
 This app integrates with the Illumio Policy Compute Engine to implement actions for automating workload containment
 
