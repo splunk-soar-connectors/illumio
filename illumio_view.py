@@ -1,6 +1,6 @@
 # File: illumio_view.py
 #
-# Copyright (c) Illumio, 2023
+# Copyright (c) Illumio, 2023-2025
 #
 # This unpublished material is proprietary to Illumio.
 # All rights reserved. The methods and
@@ -22,7 +22,6 @@
 
 
 def _get_ctx_result(result, provides):
-
     ctx_result = {}
 
     param = result.get_param()
@@ -49,7 +48,6 @@ def _get_ctx_result(result, provides):
 
 
 def display_view(provides, all_app_runs, context):
-
     context["results"] = results = []
     for summary, action_results in all_app_runs:
         for result in action_results:
