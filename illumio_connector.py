@@ -26,6 +26,8 @@ import json
 import sys
 from datetime import datetime
 
+import illumio
+
 # Phantom App imports
 import phantom.app as phantom
 import pytz
@@ -34,7 +36,6 @@ from dateutil.parser import parse
 from phantom.action_result import ActionResult
 from phantom.base_connector import BaseConnector
 
-import illumio
 from illumio_consts import *
 
 
