@@ -1,7 +1,7 @@
 # Illumio
 
 Publisher: Illumio \
-Connector Version: 1.0.1 \
+Connector Version: 1.0.2 \
 Product Vendor: Illumio \
 Product Name: Illumio \
 Minimum Product Version: 5.5.0

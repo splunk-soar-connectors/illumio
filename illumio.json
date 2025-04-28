@@ -20,8 +20,8 @@
         }
     ],
     "license": "Copyright (c) Illumio, 2023-2025",
-    "app_version": "1.0.1",
-    "utctime_updated": "2023-06-19T19:36Z",
+    "app_version": "1.0.2",
+    "utctime_updated": "2025-04-28T21:50:14.457146Z",
     "package_name": "phantom_illumio",
     "main_module": "illumio_connector.py",
     "min_phantom_version": "5.5.0",
