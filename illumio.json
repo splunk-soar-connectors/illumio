@@ -7,7 +7,7 @@
     "logo": "logo_illumio.svg",
     "logo_dark": "logo_illumio_dark.svg",
     "product_name": "Illumio",
-    "python_version": "3",
+    "python_version": ["3.9", "3.13"],
     "fips_compliant": false,
     "product_version_regex": ".*",
     "publisher": "Illumio",
